@@ -7,6 +7,8 @@
   
 </p>
 
+## Image Gallery with Titles Below
+
 <p align="center">
   <img src="2.png" width="300"><br>
   
