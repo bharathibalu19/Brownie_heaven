@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brownie Heaven - Products</title>
+  
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    body {
+      font-family: "Josefin Sans", sans-serif;
+    }
+  </style>
+</head>
+
+<body style="background-color: #ffffff; ">
+
+  <!-- Header -->
+  <header
+    style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid #ccc;">
+    <h1 style="font-size: 1.5rem; color: #3e1f0d;">Brownie Heaven</h1>
+    <nav style="display: flex; gap: 2rem;">
+      <a href="#" style="text-decoration: none; font-weight: bold; color: #3e1f0d;">HOME</a>
+      <a href="#" style="text-decoration: none; font-weight: bold; color: #3e1f0d;">ORDER</a>
+    </nav>
+  </header>
+
+  <!-- Title -->
+  <h2 style="text-align: center; font-size: 2rem; margin: 2rem 0; color: #3e1f0d;">Products</h2>
+
+  <div class="container" style="display: flex; gap: 2rem; max-width: 1300px; margin: 30px ; padding-bottom: 3rem;">
+    <!-- Sidebar -->
+    <aside class="sidebar" style="width: 250px;">
+      <div class="filter-group">
+        <h3 style="margin-bottom: 0.5rem; font-weight: bold;">Filter <span id="clearFilters"
+            style="font-size: 0.85rem; color: #a67c00; cursor: pointer;">Clear all</span></h3>
+        <label><input type="checkbox" name="category" value="Brownie Gift Box"> Brownie Gift Box</label><br>
+        <label><input type="checkbox" name="category" value="Brownies"> Brownies</label><br>
+        <label><input type="checkbox" name="category" value="Cakes"> Cakes</label><br>
+        <label><input type="checkbox" name="category" value="Christmas Gifting Collection"> Christmas Gifting
+          Collection</label>
+      </div>
+
+      <div class="sort-group" style="margin-top: 2rem;">
+        <h3 style="margin-bottom: 0.5rem; font-weight: bold;">Sort By</h3>
+        <label><input type="radio" name="sort" value="featured" checked> Featured</label><br>
+        <label><input type="radio" name="sort" value="priceLow"> Price, Low To High</label><br>
+        <label><input type="radio" name="sort" value="priceHigh"> Price, High To Low</label><br>
+        <label><input type="radio" name="sort" value="alphaAsc"> Alphabetically, A-Z</label><br>
+        <label><input type="radio" name="sort" value="alphaDesc"> Alphabetically, Z-A</label><br>
+        <label><input type="radio" name="sort" value="dateOld"> Date, Old To New</label><br>
+        <label><input type="radio" name="sort" value="dateNew"> Date, New To Old</label><br>
+        <label><input type="radio" name="sort" value="bestSelling"> Best Selling</label>
+      </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <div class="product-grid margin-40 " id="productsGrid"
+      style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; flex: 1;">
+      {% for product in products %}
+      <div class="transform transition duration-300 hover:scale-105 hover:shadow-2xltransform transition duration-300 hover:scale-105 hover:shadow-2xl"
+        style="background-color: #fff; border-radius: 16px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;"
+        onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.15)'"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.1)'">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}"
+          style="width: 100%; height: 200px; object-fit: cover;">
+        <div style="padding: 1.25rem; text-align: center;">
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: #3e1f0d; margin-bottom: 0.5rem;">{{ product.name }}
+          </h3>
+          <p style="color: #555; font-size: 0.95rem; margin-bottom: 1rem;">₹{{ product.price }}</p>
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="/product/{{ product.id }}">
+              <button
+                style="padding: 0.5rem 1rem; background-color: #7c5a46; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                View Details
+              </button>
+            </a>
+            <a href="/add-to-cart/{{ product.id }}">
+              <button
+                style="padding: 0.5rem 1rem; background-color: #552525; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                Add to Cart
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+
+</html>

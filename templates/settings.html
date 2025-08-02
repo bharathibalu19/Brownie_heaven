@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brownie Portal Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #fdf6f0;
+      padding: 40px;
+      color: #4b2e2e;
+    }
+    .back button{
+      background-color: #8B4513;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      
+    }
+    .header {
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #8b4513;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #6a4e42;
+      margin-bottom: 40px;
+    }
+
+    .settings-container {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      border: 3px dashed #d2a679;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #5c3a2e;
+    }
+
+    input[type="color"],
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #d4a373;
+      background: #fffaf6;
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    .preview {
+      height: 80px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .save-btn {
+      background: #a0522d;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .save-btn:hover {
+      background: #7b3f00;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #8b4513;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">Brownie Delight</div>
+<div class="subtitle">Sweeten your customer portal with personal touches!</div>
+<a class="back" href="/admin/dashboard">
+  <button class="bg-brown-600 hover:bg-brown-700 text-white px-4 py-2 rounded mb-6">
+     ⬅ Back to Dashboard
+  </button>
+</a>
+<div class="settings-container">
+  <form method="POST" action="/admin/settings" enctype="multipart/form-data">
+    
+
+    <div class="section-title">🖼️ Logo Upload</div>
+    <label for="logo">Upload your portal logo:</label>
+    <input type="file" id="logo" name="logo" accept="image/*" onchange="previewLogo(event)">
+    <img id="logoPreview" class="preview" src="#" alt="Logo Preview" style="display:none;" />
+
+    <div class="section-title">🎨 Colors</div>
+    <label for="primaryColor">Primary Color:</label>
+    <input type="color" id="primaryColor" name="primary_color" value="#8B4513">
+
+    <label for="secondaryColor">Secondary Color:</label>
+    <input type="color" id="secondaryColor" name="secondary_color" value="#d2691e">
+
+    <div class="section-title">🔠 Font</div>
+    <label for="fontFamily">Choose your font:</label>
+    <select id="fontFamily" name="font_family">
+      <option value="Pacifico">Pacifico (Cursive)</option>
+      <option value="Open Sans">Open Sans</option>
+      <option value="Arial">Arial</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Courier New">Courier New</option>
+    </select>
+
+    <div class="section-title">📝 Custom Dashboard Text</div>
+    <label for="customHtml">Write your welcome message or custom HTML:</label>
+    <textarea id="customHtml" name="custom_html" rows="5" placeholder="Welcome to Brownie Delight, where your cravings meet their match..."></textarea>
+
+    <button type="submit" class="save-btn">💾 Save My Delicious Settings</button>
+  </form>
+</div>
+
+
+<script>
+  function previewLogo(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const img = document.getElementById('logoPreview');
+      img.src = URL.createObjectURL(file);
+      img.style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>

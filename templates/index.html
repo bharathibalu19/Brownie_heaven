@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Brownie Studio - Inspired Clone</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+     body {
+
+      font-family: "Josefin Sans", sans-serif;
+    }
+
+    .hero-bg {
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240706/pngtree-stack-of-square-baked-brownie-chocolate-cake-slices-image_15862569.jpg');
+      background-size: cover;
+      /* background-position: center; */
+      color: saddlebrown;
+    }
+
+    #profileDropdown a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .btn-brown {
+      background-color: rgb(47, 28, 28);
+    }
+
+    .btn-brown:hover {
+      background-color: rgb(126, 60, 60);
+    }
+
+    .btn-darkbrown {
+      background-color: rgb(95, 46, 46);
+    }
+
+    .btn-darkbrown:hover {
+      background-color: rgb(40, 10, 10);
+    }
+
+    .hero-bg {
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240706/pngtree-stack-of-square-baked-brownie-chocolate-cake-slices-image_15862569.jpg');
+      background-size: cover;
+      /* background-position: center; */
+      color: saddlebrown;
+    }
+    #products{
+      background: white;
+      flex: 1;
+      min-width: 250px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);            transition: transform 0.2s ease;
+
+    }
+    #products-hover{
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- Main Navbar -->
+  <header class="w-full bg-white shadow-md py-4 margin-40">
+    <div class="text-3xl font-bold padding-40 " >The Brownie Bar</div>
+  <div class="container mx-auto flex justify-center">
+    <nav class="flex space-x-6 text-lg text-500 text-gray-700 ">
+      <a href="#home" class="hover:text-yellow-600 transition">Home</a>
+      <a href="#brownies" class="hover:text-yellow-600 transition">Brownies</a>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Hero Section -->
+  <section class="hero-bg h-screen flex items-center justify-center text-white text-center">
+    <div class="bg-black bg-opacity-50 p-8 rounded text-white">
+      <h1 class="text-4xl md:text-6xl font-bold">The Brownie</h1>
+      <p class="mt-4 text-xl">Freshly Baked, Packed with Love</p>
+      <a href="/explore"
+   class="mt-6 inline-block bg-yellow-400 text-black px-6 py-2 rounded hover:bg-yellow-300">
+   Explore Now
+</a>
+
+      <!-- <a href="#products"
+        class="mt-6 inline-block bg-yellow-400 text-black px-6 py-2 rounded hover:bg-yellow-300">Explore Now</a> -->
+    </div>
+  </section>
+
+  <!-- What More Live Section -->
+  <section id="whatmoreLive" class="py-16 px-6 bg-gray-100">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-6">What More Live</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 shadow rounded">
+          <i class="fas fa-seedling text-3xl text-green-500 mb-4"></i>
+          <h3 class="text-xl font-bold">Fresh Ingredients</h3>
+          <p>Only the best quality ingredients are used to ensure the richest taste.</p>
+        </div>
+        <div class="bg-white p-6 shadow rounded">
+          <i class="fas fa-heart text-3xl text-red-400 mb-4"></i>
+          <h3 class="text-xl font-bold">Made with Love</h3>
+          <p>Every brownie is baked with love in a hygienic home kitchen.</p>
+        </div>
+        <div class="bg-white p-6 shadow rounded">
+          <i class="fas fa-star text-3xl text-yellow-500 mb-4"></i>
+          <h3 class="text-xl font-bold">Customer Delight</h3>
+          <p>Our goal is not just satisfaction but to surprise you with goodness!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Gallery -->
+
+
+  <section id="brownies" class="py-16 px-6 bg-gradient-to-br from-pink-50 via-white to-yellow-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <!-- <h2 class="text-4xl font-bold mb-10 text-brown-900 font-serif">Our Cake</h2> -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/boozy-brownie-box_600x.jpg?v=1617979410"
+            alt="Brownie" class="h-60 w-full object-cover">
+          <div class="p-4 text-center">
+            <h2 class="text-xl font-bold text-gray-900">Boozy Brownie Box</h2>
+            <p class="text-gray-600 mt-2">₹350.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/4">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/RoastedNutsBrownie_600x.png?v=1675234191"
+            alt="Brownie" class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Roasted Nuts Brownie</h3>
+            <p class="text-sm text-gray-600 mb-4">₹400.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/5">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/RedVelvetBrownie_600x.png?v=1675234138"
+            alt="Brownie" class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Red Velvet Brownie</h3>
+            <p class="text-sm text-gray-600 mb-4">₹420.00</p>
+            <!-- <p class="text-sm text-gray-600 mb-4">₹400.00</p> -->
+            <div class="flex justify-center gap-4">
+               <a href="/product/6">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+  <section id="gifts" class="py-16 px-6 bg-gradient-to-br from-pink-50 via-white to-yellow-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <!-- <h2 class="text-4xl font-bold mb-10 text-brown-900 font-serif">Our Cake</h2> -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/choco_600x.jpg?v=1678687348" alt="Brownie"
+            class="h-60 w-full object-cover">
+          <div class="p-4 text-center">
+            <h2 class="text-xl font-bold text-gray-900">Choco Hazelnut Spread Brownie</h2>
+            <p class="text-gray-600 mt-2">From ₹350.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/7">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img
+            src="https://brownieheavenindia.com/cdn/shop/products/EgglessChocoHazelnutSpreadBrownie-Copy_2_-min_600x.png?v=1677664762"
+            alt="Brownie" class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Eggless Choco Hazelnut Spread Brownie</h3>
+            <p class="text-sm text-gray-600 mb-4">₹400.00</p>
+            <div class="flex justify-center gap-4">
+              <a href="/product/8">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/BrownieSlab_600x.jpg?v=1675432228" alt="Brownie"
+            class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Brownie Slab</h3>
+            <p class="text-sm text-gray-600 mb-4">₹700.00</p>
+            <!-- <p class="text-sm text-gray-600 mb-4">₹400.00</p> -->
+            <div class="flex justify-center gap-4">
+               <a href="/product/9">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+  <section id="cakes" class="py-16 px-6 bg-gradient-to-br from-pink-50 via-white to-yellow-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <!-- <h2 class="text-4xl font-bold mb-10 text-brown-900 font-serif">Our Cake</h2> -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/crunchhazelnut_600x.jpg?v=1678686361" alt="Brownie"
+            class="h-60 w-full object-cover">
+          <div class="p-4 text-center">
+            <h2 class="text-xl font-bold text-gray-900">Choco Hazelnut Crunch</h2>
+            <p class="text-gray-600 mt-2">From ₹1150.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/10">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/heartunlock_600x.jpg?v=1678686453" alt="Brownie"
+            class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Heart Unlock Brownie Cake</h3>
+            <p class="text-sm text-gray-600 mb-4">₹400.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/11">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/nutty_600x.jpg?v=1678686397" alt="Brownie"
+            class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Nutty Professor</h3>
+            <p class="text-sm text-gray-600 mb-4">₹420.00</p>
+            <!-- <p class="text-sm text-gray-600 mb-4">₹400.00</p> -->
+            <div class="flex justify-center gap-4">
+               <a href="/product/12">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+  <section id="desserts" class="py-16 px-6 bg-gradient-to-br from-pink-50 via-white to-yellow-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/OreoBrownie_600x.png?v=1675234070" alt="Brownie"
+            class="h-60 w-full object-cover">
+          <div class="p-4 text-center">
+            <h2 class="text-xl font-bold text-gray-900">Oreo Brownie</h2>
+            <p class="text-gray-600 mt-2">₹350.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/13">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/files/SaltedCaramelBrownie_600x.png?v=1684211636"
+            alt="Brownie" class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Salted Caramel Fudge Brownie</h3>
+            <p class="text-sm text-gray-600 mb-4">₹400.00</p>
+            <div class="flex justify-center gap-4">
+               <a href="/product/14">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Brownie Card -->
+        <div
+          class="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <img src="https://brownieheavenindia.com/cdn/shop/products/TripleChocolateBrownie_600x.png?v=1675235268"
+            alt="Brownie" class="w-full h-56 object-cover transition duration-300 hover:scale-110">
+          <div class="p-5 text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Triple Chocolate Brownie</h3>
+            <p class="text-sm text-gray-600 mb-4">₹420.00</p>
+            <!-- <p class="text-sm text-gray-600 mb-4">₹400.00</p> -->
+            <div class="flex justify-center gap-4">
+               <a href="/product/15">
+                <button style="background-color: rgb(59, 14, 14);"
+                  class="mt-4 px-4 py-2 text-white rounded-lg hover:bg-gray-700">
+                  View Details
+                </button>
+              </a>
+              <!-- <button class="btn-darkbrown mt-4 px-4 py-2 text-white rounded-lg">View Details</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+
+  <!-- Dashboard Section -->
+
+  <!-- Add in navbar right section -->
+
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919876543210"
+    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- Login/Register Link -->
+  {% if user_name %}
+  <div class="fixed top-3 right-6 bg-green-200 text-black px-4 py-2 rounded shadow">
+    Hello, {{ user_name }} |
+    <a href="/logout" class="underline text-blue-700">Logout</a>
+  </div>
+  {% else %}
+  <a href="/login" class="fixed top-3 right-6 bg-yellow-400 hover:bg-yellow-300 text-black px-4 py-2 rounded shadow">
+    Login/Register
+  </a>
+  {% endif %}
+  <!-- Footer --> 
+  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+      <!-- About -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">The Brownie </h3>
+        <p>Delicious homemade brownies, cakes & treats baked with love. Delivered fresh to your door.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#cakes" class="hover:underline">Cakes</a></li>
+          <li><a href="#brownies" class="hover:underline">Brownies</a></li>
+          <li><a href="#desserts" class="hover:underline">Desserts</a></li>
+          <li><a href="#gifts" class="hover:underline">Gift Hampers</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Contact Us</h4>
+        <p>📞 8939621467</p>
+        <p>📧 info@brownieshop.com</p>
+        <p>📍 Chennai, India</p>
+      </div>
+
+      <!-- Social Icons -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4 text-2xl">
+          <a href="#" class="hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-yellow-400"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-yellow-400"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center text-sm text-gray-400 mt-8">
+      &copy; 2025 Brownie Studio. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const items = document.querySelectorAll('.category-item');
+
+    searchInput.addEventListener('input', function () {
+      const value = this.value.toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(value) ? 'block' : 'none';
+      });
+    });
+    fetch('/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'admin@example.com',
+    password: 'admin123',
+    role: 'admin'
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+  </script>
+
+</body>
+
+</html>

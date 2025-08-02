@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>My Profile</h2>
+<form method="POST" action="/customer/update-profile">
+    First Name: <input type="text" name="first_name" value="{{ user.first_name }}"><br>
+    Last Name: <input type="text" name="last_name" value="{{ user.last_name }}"><br>
+    Email: <input type="email" value="{{ user.email }}" disabled><br>
+    <button type="submit">Save Changes</button>
+</form>
+
+<h3>Change Password</h3>
+<form method="POST" action="/customer/change-password">
+    Current Password: <input type="password" name="current_password"><br>
+    New Password: <input type="password" name="new_password"><br>
+    Confirm Password: <input type="password" name="confirm_password"><br>
+    <button type="submit">Change Password</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Brownie Studio - Inspired Clone</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+
+      font-family: "Josefin Sans", sans-serif;
+    }
+
+    .hero-bg {
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240706/pngtree-stack-of-square-baked-brownie-chocolate-cake-slices-image_15862569.jpg');
+      background-size: cover;
+      /* background-position: center; */
+      color: saddlebrown;
+    }
+
+    #profileDropdown a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .btn-brown {
+      background-color: rgb(47, 28, 28);
+    }
+
+    .btn-brown:hover {
+      background-color: rgb(126, 60, 60);
+    }
+
+    .btn-darkbrown {
+      background-color: rgb(95, 46, 46);
+    }
+
+    .btn-darkbrown:hover {
+      background-color: rgb(40, 10, 10);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+
+  <!-- Enhanced Top Navigation Bar -->
+  <div class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
+    <!-- Left Logo or Title -->
+    <div class="text-2xl font-bold ">
+      The Brownie Bar
+    </div>
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex space-x-6 text-lg text-gray-700 font-medium">
+      <a href="#home" class="hover:text-yellow-600 transition">Home</a>
+      <a href="#brownies" class="hover:text-yellow-600 transition">Brownies</a>
+    </nav>
+
+    <!-- Profile Dropdown -->
+    <div class="relative">
+      <button onclick="toggleDropdown()" class="flex items-center gap-2 focus:outline-none">
+        <img src="{{ url_for('static', filename='profile.png') }}" alt="User"
+          class="w-10 h-10 rounded-full border-2 border-yellow-400">
+        <i class="fas fa-chevron-down text-gray-600"></i>
+      </button>
+      <div id="profileDropdown"
+        class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-50 text-sm text-gray-700">
+
+        <a href="javascript:void(0)" onclick="toggleProfileModal()" class="block px-4 py-2 hover:bg-gray-100">
+          👤 My Profile
+        </a>
+
+        <!-- <a href="/customer/profile" class="block px-4 py-2 hover:bg-gray-100">👤 My Profile</a> -->
+        <!-- <a href="/customer/edit-profile" class="block px-4 py-2 hover:bg-gray-100">✏️ Edit Profile</a>
+        <a href="/customer/change-password" class="block px-4 py-2 hover:bg-gray-100">🔒 Change Password</a> -->
+        <a href="{{ url_for('logout') }}" class="block px-4 py-2 text-red-600 hover:bg-red-50">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+
+  <script>
+    function toggleProfileModal() {
+      const modal = document.getElementById("profileModal");
+      modal.classList.toggle("hidden");
+    }
+
+    function toggleDropdown() {
+      const menu = document.getElementById("profileDropdown");
+      menu.classList.toggle("hidden");
+    }
+
+    window.onclick = function (event) {
+      if (!event.target.closest('#profileDropdown') && !event.target.closest('[onclick="toggleDropdown()"]')) {
+        document.getElementById("profileDropdown").classList.add("hidden");
+      }
+    }
+  </script>
+  <div id="profileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-20">
+    <div class="bg-white w-96 p-6 rounded shadow-md relative">
+      <h2 class="text-2xl mb-4 font-bold text-center">My Profile</h2>
+      <form method="POST" action="/update_profile">
+        <label>Name:</label>
+        <input name="name" value="{{ user.name }}" class="w-full border px-3 py-2 mb-3 rounded" required />
+        <label>Email:</label>
+        <input name="email" value="{{ user.email }}" class="w-full border px-3 py-2 mb-3 rounded" readonly />
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Save Changes</button>
+      </form>
+      <hr class="my-4" />
+      <form method="POST" action="/change_password">
+        <label>Current Password:</label>
+        <input type="password" name="current_password" class="w-full border px-3 py-2 mb-2 rounded" required />
+        <label>New Password:</label>
+        <input type="password" name="new_password" class="w-full border px-3 py-2 mb-2 rounded" required />
+        <label>Confirm Password:</label>
+        <input type="password" name="confirm_password" class="w-full border px-3 py-2 mb-3 rounded" required />
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-brown-700">Change
+          Password</button>
+      </form>
+      <button onclick="toggleProfileModal()"
+        class="absolute top-2 right-2 text-gray-600 hover:text-black">&times;</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-bg h-screen flex items-center justify-center text-white text-center">
+    <div class="bg-black bg-opacity-50 p-8 rounded text-white">
+      <h1 class="text-4xl md:text-6xl font-bold">The Brownie</h1>
+      <p class="mt-4 text-xl">Freshly Baked, Packed with Love</p>
+      <a href="/explore"
+        class="mt-6 inline-block bg-yellow-400 text-black px-6 py-2 rounded hover:bg-yellow-300">Explore Now</a>
+    </div>
+  </section>
+
+  <!-- What More Live Section -->
+  <section id="whatmoreLive" class="py-16 px-6 bg-gray-100">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-6">What More Live</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 shadow rounded">
+          <i class="fas fa-seedling text-3xl text-green-500 mb-4"></i>
+          <h3 class="text-xl font-bold">Fresh Ingredients</h3>
+          <p>Only the best quality ingredients are used to ensure the richest taste.</p>
+        </div>
+        <div class="bg-white p-6 shadow rounded">
+          <i class="fas fa-heart text-3xl text-red-400 mb-4"></i>
+          <h3 class="text-xl font-bold">Made with Love</h3>
+          <p>Every brownie is baked with love in a hygienic home kitchen.</p>
+        </div>
+        <div class="bg-white p-6 shadow rounded">
+          <i class="fas fa-star text-3xl text-yellow-500 mb-4"></i>
+          <h3 class="text-xl font-bold">Customer Delight</h3>
+          <p>Our goal is not just satisfaction but to surprise you with goodness!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Gallery 1-->
+
+  <div class="p-6">
+    <h2 class="text-3xl font-bold text-brown-800 mb-6">Available Products</h2>
+
+    <div class="flex overflow-x-auto gap-6 pb-4">
+      {% for product in products %}
+      <div class="bg-white border border-gray-200 shadow-lg rounded-2xl p-4 w-72 flex-shrink-0">
+        <img src="{{ product['image_url'] or '/static/placeholder.jpg' }}" alt="{{ product['name'] }}"
+          class="w-full h-40 object-cover rounded-lg mb-4">
+
+        <h3 class="text-xl font-semibold text-brown-700">{{ product['name'] }}</h3>
+        <p class="text-sm text-gray-600 mb-2">{{ product['description'][:60] }}{% if product['description']|length > 60
+          %}...{% endif %}</p>
+
+        <div class="text-lg font-bold text-yellow-800 mb-1">₹{{ product['price'] }}</div>
+        <p class="text-sm text-gray-500 mb-3">Stock: {{ product['stock'] }}</p>
+
+        <div class="flex justify-between gap-2">
+          <a href="/product/{{ product['id'] }}"
+            class="bg-yellow-600 hover:bg-yellow-700 text-white px-3 py-1 rounded text-sm">
+            View Details
+          </a>
+          <a href="/add-to-cart/{{ product['id'] }}"
+            class="bg-yellow-700 hover:bg-yellow-800 text-white px-3 py-1 rounded text-sm">
+            Add to Cart
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Dashboard Section -->
+
+  <!-- Add in navbar right section -->
+
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919876543210"
+    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+      <!-- About -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Brownie Studio</h3>
+        <p>Delicious homemade brownies, cakes & treats baked with love. Delivered fresh to your door.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#cakes" class="hover:underline">Cakes</a></li>
+          <li><a href="#brownies" class="hover:underline">Brownies</a></li>
+          <li><a href="#desserts" class="hover:underline">Desserts</a></li>
+          <li><a href="#gifts" class="hover:underline">Gift Hampers</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Contact Us</h4>
+        <p>📞 8939621467</p>
+        <p>📧 info@brownieshop.com</p>
+        <p>📍 Chennai, India</p>
+      </div>
+
+      <!-- Social Icons -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4 text-2xl">
+          <a href="#" class="hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-yellow-400"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-yellow-400"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center text-sm text-gray-400 mt-8">
+      &copy; 2025 Brownie Studio. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const items = document.querySelectorAll('.category-item');
+
+    searchInput.addEventListener('input', function () {
+      const value = this.value.toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(value) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+</body>
+
+</html>

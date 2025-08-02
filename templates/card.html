@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Brownie</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <div class="max-w-4xl mx-auto p-8 bg-white mt-10 shadow rounded">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Checkout</h1>
+
+        <form method="POST" action="/place-order">
+            <!-- Contact Info -->
+            <h2 class="text-xl font-semibold mb-2 text-gray-700">Contact Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <input type="email" name="email" placeholder="Email" class="p-3 border rounded" required>
+                <input type="text" name="phone" placeholder="Phone" class="p-3 border rounded">
+                <input type="text" name="name" placeholder="Name" class="p-3 border rounded">
+            </div>
+
+            <!-- Shipping Info -->
+            <h2 class="text-xl font-semibold mb-2 text-gray-700">Shipping Address</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <input type="text" name="address" placeholder="Address" class="p-3 border rounded" required>
+                <input type="text" name="city" placeholder="City" class="p-3 border rounded" required>
+                <input type="text" name="state" placeholder="State" class="p-3 border rounded" required>
+                <input type="text" name="zip_code" placeholder="ZIP / PIN Code" class="p-3 border rounded" required>
+            </div>
+
+            <!-- Order Summary -->
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Order Summary</h2>
+            <div class="border-t pt-4 space-y-3">
+                {% for item in items %}
+                <div class="flex justify-between items-center">
+                    <span>{{ item.product.name }} × {{ item.quantity }}</span>
+                    <span>₹{{ item.subtotal }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="border-t mt-4 pt-4 text-right space-y-1 text-gray-700">
+                <p>Subtotal: ₹{{ total }}</p>
+                <p>Discount: ₹{{ discount }}</p>
+                <p>Tax: ₹{{ tax }}</p>
+                <p class="text-xl font-bold">Grand Total: ₹{{ grand_total }}</p>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded shadow">
+                    Place Order
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('clearFilters').addEventListener('click', function () {
+            const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+        });
+    </script>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        <p>&copy; 2023 Brownie Heaven. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

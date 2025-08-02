@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brownie Heaven - Products</title>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 2rem;
+      background: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ccc;
+    }
+    header img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+    header nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+    header nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+    }
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .container {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      font-size: 0.9rem;
+    }
+    .sidebar h3 {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .filter-group {
+      margin-bottom: 1.5rem;
+    }
+    .filter-group label,
+    .sort-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+    .clear-filters {
+      font-size: 0.85rem;
+      color: #007bff;
+      cursor: pointer;
+      user-select: none;
+      margin-left: 1rem;
+    }
+    /* Products grid */
+    .products-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      border: 1px solid #eee;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      border-radius: 6px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+    .product-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+    .product-price {
+      color: #555;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .btn-add {
+      background-color: #2b0a0a;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .btn-add:hover {
+      background-color: #431313;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.ibb.co/xqYd0vL/brownie-logo.png" alt="Brownie Heaven Logo" />
+  <nav>
+    <a href="#">HOME</a>
+    <a href="#">ORDER</a>
+  </nav>
+</header>
+
+<h2>Products</h2>
+<div class="container">
+  <!-- Filters sidebar -->
+  <aside class="sidebar">
+    <div class="filter-group">
+      <h3>Filter <span class="clear-filters" id="clearFilters">Clear all</span></h3>
+      <label><input type="checkbox" name="category" value="Brownie Gift Box" /> Brownie Gift Box</label>
+      <label><input type="checkbox" name="category" value="Brownies" /> Brownies</label>
+      <label><input type="checkbox" name="category" value="Cakes" /> Cakes</label>
+      <label><input type="checkbox" name="category" value="Christmas Gifting Collection" /> Christmas Gifting Collection</label>
+    </div>
+
+    <div class="sort-group">
+      <h3>Sort By</h3>
+      <label><input type="radio" name="sort" value="featured" checked /> Featured</label>
+      <label><input type="radio" name="sort" value="priceLow" /> Price, Low To High</label>
+      <label><input type="radio" name="sort" value="priceHigh" /> Price, High To Low</label>
+      <label><input type="radio" name="sort" value="alphaAsc" /> Alphabetically, A-Z</label>
+      <label><input type="radio" name="sort" value="alphaDesc" /> Alphabetically, Z-A</label>
+      <label><input type="radio" name="sort" value="dateOld" /> Date, Old To New</label>
+      <label><input type="radio" name="sort" value="dateNew" /> Date, New To Old</label>
+      <label><input type="radio" name="sort" value="bestSelling" /> Best Selling</label>
+    </div>
+  </aside>
+
+  <!-- Products grid -->
+  <section class="products-grid" id="productsGrid">
+    <!-- Products will be inserted here by JS -->
+  </section>
+</div>
+
+<script>
+  // Sample product data
+  const products = [
+    {
+      id: 1,
+      title: "Assorted Brownie Box - 3 Pcs",
+      price: 450,
+      category: "Brownie Gift Box",
+      img: "https://i.ibb.co/7r8hDWX/3pcs-brownie.jpg",
+      dateAdded: "2023-01-15",
+      bestSellingRank: 3,
+    },
+    {
+      id: 2,
+      title: "Assorted Brownie Box - 6 Pcs",
+      price: 650,
+      category: "Brownie Gift Box",
+      img: "https://i.ibb.co/jMbZTVZ/6pcs-brownie.jpg",
+      dateAdded: "2023-02-10",
+      bestSellingRank: 1,
+    },
+    {
+      id: 3,
+      title: "Brownie Box - 4 Pcs",
+      price: 550,
+      category: "Brownie Gift Box",
+      img: "https://i.ibb.co/QmXWZ6G/4pcs-brownie.jpg",
+      dateAdded: "2023-03-05",
+      bestSellingRank: 5,
+    },
+    {
+      id: 4,
+      title: "Chocolate Fudge Brownie",
+      price: 200,
+      category: "Brownies",
+      img: "https://i.ibb.co/6X1QjCG/choc-fudge.jpg",
+      dateAdded: "2023-02-01",
+      bestSellingRank: 2,
+    },
+    {
+      id: 5,
+      title: "Valentine's Special Brownie",
+      price: 300,
+      category: "Brownies",
+      img: "https://i.ibb.co/jRHBzTJ/valentine-brownie.jpg",
+      dateAdded: "2023-02-14",
+      bestSellingRank: 4,
+    },
+    {
+      id: 6,
+      title: "Chocolate Cake Slice",
+      price: 250,
+      category: "Cakes",
+      img: "https://i.ibb.co/jR2yZYR/choc-cake.jpg",
+      dateAdded: "2023-01-20",
+      bestSellingRank: 7,
+    },
+    {
+      id: 7,
+      title: "Christmas Gifting Box",
+      price: 800,
+      category: "Christmas Gifting Collection",
+      img: "https://i.ibb.co/4ZMjZts/christmas-box.jpg",
+      dateAdded: "2022-12-10",
+      bestSellingRank: 6,
+    }
+  ];
+
+  // DOM elements
+  const productsGrid = document.getElementById('productsGrid');
+  const filterCheckboxes = document.querySelectorAll('input[name="category"]');
+  const sortRadios = document.querySelectorAll('input[name="sort"]');
+  const clearFiltersBtn = document.getElementById('clearFilters');
+
+  function renderProducts(items) {
+    productsGrid.innerHTML = '';
+    if (items.length === 0) {
+      productsGrid.innerHTML = '<p>No products found.</p>';
+      return;
+    }
+    items.forEach(product => {
+      const productEl = document.createElement('div');
+      productEl.className = 'product-card';
+      productEl.innerHTML = `
+        <img src="${product.img}" alt="${product.title}" />
+        <div class="product-title">${product.title}</div>
+        <div class="product-price">₹ ${product.price.toFixed(2)}</div>
+        <button class="btn-add" onclick="addToCart(${product.id})">Add to Cart</button>
+      `;
+      productsGrid.appendChild(productEl);
+    });
+  }
+
+  function getSelectedCategories() {
+    return Array.from(filterCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+  }
+
+  function getSelectedSort() {
+    return Array.from(sortRadios).find(radio => radio.checked).value;
+  }
+
+  function filterAndSortProducts() {
+    let filtered = products.slice();
+
+    // Filter by category
+    const selectedCategories = getSelectedCategories();
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter(p => selectedCategories.includes(p.category));
+    }
+
+    // Sort products
+    const sortBy = getSelectedSort();
+    switch (sortBy) {
+      case 'priceLow':
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case 'priceHigh':
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case 'alphaAsc':
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'alphaDesc':
+        filtered.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case 'dateOld':
+        filtered.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+        break;
+      case 'dateNew':
+        filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+        break;
+      case 'bestSelling':
+        filtered.sort((a, b) => a.bestSellingRank - b.bestSellingRank);
+        break;
+      case 'featured':
+      default:
+        // featured - no sorting or default order
+        break;
+    }
+
+    renderProducts(filtered);
+  }
+
+  // Add event listeners for filters and sort
+  filterCheckboxes.forEach(cb => cb.addEventListener('change', filterAndSortProducts));
+  sortRadios.forEach(radio => radio.addEventListener('change', filterAndSortProducts));
+
+  // Clear filters
+  clearFiltersBtn.addEventListener('click', () => {
+    filterCheckboxes.forEach(cb => cb.checked = false);
+    sortRadios.forEach(radio => radio.checked = false);
+    // Set default sort (featured)
+    sortRadios[0].checked = true;
+    filterAndSortProducts();
+  });
+
+  // Dummy Add to Cart function
+  function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    alert(`Added "${product.title}" to cart.`);
+  }
+
+  // Initial render
+  filterAndSortProducts();
+</script>
+
+</body>
+</html>
