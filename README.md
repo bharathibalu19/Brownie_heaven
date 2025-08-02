@@ -3,7 +3,7 @@
 ## Image Gallery with Titles Below
 
 <p align="center">
-  <img src="1.jpg" width="300"><br>
+  <img src="1.png" width="300"><br>
   <b>Image 1</b>
 </p>
 
